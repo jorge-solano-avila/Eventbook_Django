@@ -6,7 +6,7 @@ class City( models.Model ):
 	name = models.CharField( db_column = "Name", max_length = 255, null = False, blank = False )
 
 	def __unicode__( self ):
-        return self.name
+		return self.name
 
 class Event( models.Model ):
 	TYPE_CHOICES = (
@@ -26,4 +26,4 @@ class Event( models.Model ):
 	finishDateTime = models.DateTimeField( db_column = "FinishDateTime", null = False, blank = False )
 
 	def __unicode__( self ):
-        return str( self.id ) + " - " + self.name
+		return str( self.id ) + " - " + self.name
