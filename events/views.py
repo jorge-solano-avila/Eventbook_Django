@@ -9,7 +9,7 @@ class Events( APIView ):
 		try:
 			City.objects.get( id = cityId )
 		except City.DoesNotExist:
-			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist" } )
+			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist", "success": False } )
 		
 		events = Event.objects.filter( city__id = cityId )
 		eventsAux = [
@@ -22,7 +22,7 @@ class Events( APIView ):
 			"longitude": event.longitude
 		} for event in events]
 
-		return Response( { "events": eventsAux } )
+		return Response( { "events": eventsAux, "success": True } )
 
 class EventsByType( APIView ):
 	def get( self, request, format = None ):
@@ -30,7 +30,7 @@ class EventsByType( APIView ):
 		try:
 			City.objects.get( id = cityId )
 		except City.DoesNotExist:
-			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist" } )
+			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist", "success": False } )
 		
 		events = Event.objects.filter( city__id = cityId, type = request.query_params["type"] )
 		eventsAux = [
@@ -43,7 +43,7 @@ class EventsByType( APIView ):
 			"longitude": event.longitude
 		} for event in events]
 
-		return Response( { "events": eventsAux } )
+		return Response( { "events": eventsAux, "success": True } )
 
 class EventsByDistance( APIView ):
 	def get( self, request, format = None ):
@@ -51,7 +51,7 @@ class EventsByDistance( APIView ):
 		try:
 			City.objects.get( id = cityId )
 		except City.DoesNotExist:
-			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist" } )
+			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist", "success": False } )
 		
 		events = Event.objects.filter( city__id = cityId )
 		eventsAux = [
@@ -64,7 +64,7 @@ class EventsByDistance( APIView ):
 			"longitude": event.longitude
 		} for event in events]
 
-		return Response( { "events": eventsAux } )
+		return Response( { "events": eventsAux, "success": True } )
 
 class EventsByDate( APIView ):
 	def get( self, request, format = None ):
@@ -72,7 +72,7 @@ class EventsByDate( APIView ):
 		try:
 			City.objects.get( id = cityId )
 		except City.DoesNotExist:
-			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist" } )
+			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist", "success": False } )
 		
 		events = Event.objects.filter( city__id = cityId )
 		eventsAux = [
@@ -85,4 +85,4 @@ class EventsByDate( APIView ):
 			"longitude": event.longitude
 		} for event in events]
 
-		return Response( { "events": eventsAux } )
+		return Response( { "events": eventsAux, "success": True } )
