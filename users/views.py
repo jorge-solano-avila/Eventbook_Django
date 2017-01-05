@@ -4,5 +4,5 @@ from models import User
 
 
 class UserInformation( APIView ):
-	def get( self, request, format=None ):
+	def get( self, request, format = None ):
 		return Response( { "user": {} } )
