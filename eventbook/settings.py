@@ -75,8 +75,12 @@ WSGI_APPLICATION = "eventbook.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join( BASE_DIR, "db.sqlite3" ),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "ddm4frggaustfa",
+        "HOST": "ec2-107-20-193-74.compute-1.amazonaws.com",
+        "PORT": "5432",
+        "USER": "paqrymusfsbeul",
+        "PASSWORD": "d5087507895518d61a4079cff7417c5a28e06e7b934b5551ce3e595043f99898"
     }
 }
 
