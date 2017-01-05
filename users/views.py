@@ -29,3 +29,5 @@ class UserInformation( APIView ):
 			}
 
 			return Response( { "user": userAux } )
+		else:
+			return Response( { "error": 3, "description": "Invalid password" } )
