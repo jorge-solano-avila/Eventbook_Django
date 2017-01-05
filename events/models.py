@@ -3,7 +3,7 @@ from django.db import models
 
 
 class City( models.Model ):
-	name = name = models.CharField( db_column = "Name", max_length = 255, null = False, blank = False )
+	name = models.CharField( db_column = "Name", max_length = 255, null = False, blank = False )
 
 	def __unicode__( self ):
         return self.name
