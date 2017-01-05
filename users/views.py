@@ -14,6 +14,7 @@ class UserInformation( APIView ):
 
 		if user.password == password:
 			events = [{
+				"id": event.id,
 				"name": event.name, 
 				"type": event.type,
 				"startDateTime": event.startDateTime,
@@ -22,6 +23,7 @@ class UserInformation( APIView ):
 				"longitude": event.longitude
 			} for event in user.events.all()]
 			userAux = {
+				"id": user.id,
 				"name": user.name,
 				"lastName": user.lastName,
 				"email": user.email,
@@ -43,5 +45,13 @@ class AddUser( APIView ):
 		if userExist:
 			return Response( { "error": 4, "description": "User with email = " + email + " exist" } )
 
-		User.objects.create( name = name, lastName = lastName, email = email, password = password )
-		return Response( { "success": True } )
+		user = User.objects.create( name = name, lastName = lastName, email = email, password = password )
+		userAux = {
+			"id": user.id,
+			"name": user.name,
+			"lastName": user.lastName,
+			"email": user.email,
+			"events": []
+		}
+
+		return Response( { "user": userAux, "success": True } )
