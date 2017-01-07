@@ -10,7 +10,7 @@ class UserInformation( APIView ):
 		try:
 			user = User.objects.get( email = email )
 		except User.DoesNotExist:
-			return Response( { "error": 2, "description": "User with email = " + email + " doesn't exist", "success": False } )
+			return Response( { "error": 2, "description": "User with email = " + email + " doesn't exist", "translation": "ERROR.USER_DOES_NOT_EXIST", "success": False } )
 
 		if user.password == password:
 			events = [{
@@ -32,7 +32,7 @@ class UserInformation( APIView ):
 
 			return Response( { "user": userAux, "success": True } )
 		else:
-			return Response( { "error": 3, "description": "Invalid password", "success": False } )
+			return Response( { "error": 3, "description": "Invalid password", "translation": "ERROR.PASSWORD_INCORRECT", "success": False } )
 
 class AddUser( APIView ):
 	def post( self, request, format = None ):
@@ -43,7 +43,7 @@ class AddUser( APIView ):
 		
 		userExist = User.objects.filter( email = email ).exists()
 		if userExist:
-			return Response( { "error": 4, "description": "User with email = " + email + " exist" } )
+			return Response( { "error": 4, "description": "User with email = " + email + " exist", "translation": "ERROR.USER_EXISTS", "success": False } )
 
 		user = User.objects.create( name = name, lastName = lastName, email = email, password = password )
 		userAux = {
