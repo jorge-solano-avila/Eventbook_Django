@@ -39,12 +39,12 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
     "events",
     "users",
-    "whitenoise.runserver_nostatic",
-    "django.contrib.staticfiles",
+    "whitenoise.runserver_nostatic"
 ]
 
 MIDDLEWARE = [
@@ -152,4 +152,4 @@ STATICFILES_DIRS = [
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
