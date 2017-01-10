@@ -27,6 +27,7 @@ class Events( APIView ):
 			"id": event.id,
 			"name": event.name,
 			"type": event.type,
+			"description": event.description,
 			"startDateTime": event.startDateTime,
 			"finishDateTime": event.finishDateTime,
 			"latitude": event.latitude,
