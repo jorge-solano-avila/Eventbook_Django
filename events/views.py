@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db.models import Count
 from models import City, Event
 import json
 import requests
@@ -21,7 +22,7 @@ class Events( APIView ):
 		except City.DoesNotExist:
 			return Response( { "error": 1, "description": "City with place id = " + str( placeId ) + " doesn't exist", "translation": "ERROR.NO_EVENTS_IN_CITY", "success": False } )
 		
-		events = Event.objects.filter( city = city )
+		events = Event.objects.filter( city = city ).annotate( usersCount = Count( "user" ) ).order_by( "-usersCount" )
 		eventsAux = [
 		{
 			"id": event.id,
