@@ -35,3 +35,14 @@ class Events( APIView ):
 		} for event in events]
 
 		return Response( { "events": eventsAux, "success": True } )
+
+class CityInformation( APIView ):
+	def get( self, request, format = None ):
+		cityId = request.query_params["id"]
+
+		try:
+			city = City.objects.get( id = cityId )
+		except City.DoesNotExist:
+			return Response( { "error": 1, "description": "City with id = " + str( cityId ) + " doesn't exist", "translation": "ERROR.NO_EVENTS_IN_CITY", "success": False } )
+
+		return Response( { "city": city.name, "success": True } )
