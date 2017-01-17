@@ -9,7 +9,7 @@ class CityAdmin( admin.ModelAdmin ):
 class EventAdmin( admin.ModelAdmin ):
 	search_fields = ["id", "name", "type", "latitude", "longitude"]
 	raw_id_fields = ["city"]
-	list_display = ( "id", "name", "type", "city", "startDateTime", "finishDateTime", "latitude", "longitude" )
+	list_display = ( "id", "name", "type", "city", "startDateTime", "finishDateTime", "latitude", "longitude", "imageURL" )
 
 admin.site.register( City, CityAdmin )
 admin.site.register( Event, EventAdmin )
