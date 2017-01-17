@@ -15,7 +15,8 @@ class Events( APIView ):
 		response = requests.get( "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latLng )
 		if response.status_code == 200:
 			response = response.json()
-			placeId = response["results"][4]["place_id"]
+			aux = len( response["results"] ) - 3
+			placeId = response["results"][aux]["place_id"]
 
 		try:
 			city = City.objects.get( placeId = placeId )
