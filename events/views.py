@@ -34,6 +34,7 @@ class Events( APIView ):
 			"finishDateTime": event.finishDateTime,
 			"latitude": event.latitude,
 			"longitude": event.longitude,
+			"imageURL": event.imageURL,
 			"cityId": city.id
 		} for event in events]
 

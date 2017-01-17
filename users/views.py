@@ -22,6 +22,7 @@ class UserInformation( APIView ):
 				"finishDateTime": event.finishDateTime,
 				"latitude": event.latitude,
 				"longitude": event.longitude,
+				"imageURL": event.imageURL,
 				"cityId": event.city.id
 			} for event in user.events.all()]
 			userAux = {
